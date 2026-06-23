@@ -1,7 +1,7 @@
 {
-  "name": "poc-outlook-imap-gemini",
+  "name": "ai-email-triage-whatsapp",
   "version": "1.0.0",
-  "description": "POC local para ler e-mails via IMAP, classificar com Gemini e mover para pastas",
+  "description": "AI-powered email triage system using Gemini, IMAP and WhatsApp API to classify inbox messages and send executive summaries.",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
