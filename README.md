@@ -1,58 +1,37 @@
-# POC - Outlook/IMAP + Gemini
+# AI Email Triage + WhatsApp Automation
 
-Esta POC monitora uma caixa de entrada via IMAP, lê e-mails novos, classifica com Gemini e move para uma pasta conforme a prioridade.
+Sistema de triagem inteligente de e-mails que monitora uma caixa de entrada via IMAP, classifica mensagens com Gemini/LLM por prioridade e envia resumos executivos via WhatsApp.
 
-Categorias:
+## Problema
 
-- `1 - Muito importante`
-- `2 - Importante`
-- `3 - Pouco importante`
-- `9 - Revisar erro`
+Executivos e equipes recebem muitos e-mails diariamente, misturando mensagens críticas, demandas operacionais, notificações automáticas, marketing e spam. Isso aumenta o risco de perder prazos, aprovações, contratos, cobranças ou solicitações importantes.
 
-## Como rodar
+## Solução
 
-### 1. Instalar dependências
+A aplicação automatiza a leitura da caixa de entrada, interpreta o conteúdo dos e-mails com IA generativa, classifica cada mensagem por prioridade e organiza os e-mails em pastas específicas. Quando um e-mail é classificado como muito importante, ele entra em uma fila de resumo para envio via WhatsApp.
 
-```bash
-npm install
-```
+## Principais funcionalidades
 
-### 2. Criar `.env`
+• Monitoramento de e-mails via IMAP  
+• Classificação automática com Gemini API  
+• Prompt estruturado para triagem executiva  
+• Resposta padronizada em JSON  
+• Normalização de prioridade, risco e ação necessária  
+• Separação em pastas: spam, muito importante, importante e pouco importante  
+• Fila de e-mails muito importantes para WhatsApp  
+• Envio de resumo via WhatsApp API  
+• Controle de horários de envio  
+• Retry automático para falhas temporárias da API Gemini  
+• Configuração por `.env` e `config.json`
 
-Copie `.env.example` e renomeie para `.env`.
+## Stack
 
-Preencha:
-
-```env
-GEMINI_API_KEY=sua_chave_gemini
-IMAP_HOST=outlook.office365.com
-IMAP_PORT=993
-IMAP_SECURE=true
-IMAP_USER=seu_email@dominio.com
-IMAP_PASS=sua_senha_ou_senha_de_app
-MOVE_EMAILS=true
-ONLY_UNSEEN=true
-```
-
-### 3. Testar Gemini primeiro
-
-```bash
-npm run test:gemini
-```
-
-### 4. Rodar monitor
-
-```bash
-npm start
-```
-
-Agora envie um e-mail para a caixa configurada. O terminal deve mostrar a classificação e mover o e-mail para a pasta sugerida.
-
-## Importante sobre Outlook/Microsoft 365
-
-Se for uma conta Microsoft 365 corporativa, login por usuário e senha no IMAP pode não funcionar porque a Microsoft removeu autenticação básica para Exchange Online. Nesse caso, o caminho correto é usar Microsoft Graph/OAuth.
-
-Para uma POC rápida, funciona melhor com:
-- conta de teste com IMAP liberado;
-- conta de e-mail em cPanel/servidor próprio;
-- conta Outlook.com com IMAP habilitado e autenticação compatível.
+• TypeScript  
+• Node.js  
+• Gemini API  
+• IMAP / ImapFlow  
+• MailParser  
+• WhatsApp Cloud API  
+• Axios  
+• dotenv  
+• tsx
