@@ -1,5 +1,5 @@
 export function montarPrompt(email: any, contexto: any = {}) {
-  const nomeDono = contexto.nomeDono ||;
+  const nomeDono = contexto.nomeDono;
   return `
 Você é um assistente executivo responsável por classificar e-mails por prioridade e identificar spam.
 
