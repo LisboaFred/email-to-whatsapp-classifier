@@ -1,5 +1,5 @@
 export function montarPrompt(email: any, contexto: any = {}) {
-  const nomeDono = contexto.nomeDono || "Giselle Amorim";
+  const nomeDono = contexto.nomeDono ||;
   return `
 Você é um assistente executivo responsável por classificar e-mails por prioridade e identificar spam.
 
@@ -68,16 +68,16 @@ Exemplos de referência:
 Exemplo 1 — Alerta de segurança de conta de outra pessoa:
 Remetente: Dropbox <no-reply@dropbox.com>
 Assunto: Olá, ALF, notamos um novo acesso à sua conta do Dropbox
-Proprietária da caixa: Giselle Amorim
+Proprietária da caixa: 
 Classificação correta: POUCO_IMPORTANTE (ou SPAM)
-Motivo: o alerta é direcionado a "ALF", não a Giselle Amorim. Não exige ação direta dela.
+Motivo: o alerta é direcionado outra pessoa
 
 Exemplo 2 — Alerta de segurança da própria conta:
 Remetente: Dropbox <no-reply@dropbox.com>
-Assunto: Giselle, notamos um novo acesso à sua conta do Dropbox
-Proprietária da caixa: Giselle Amorim
+Assunto: Notamos um novo acesso à sua conta do Dropbox
+Proprietária da caixa:
 Classificação correta: IMPORTANTE
-Motivo: alerta de segurança direcionado à própria Giselle, exige verificação imediata.
+Motivo: alerta de segurança direcionado à própria, exige verificação imediata.
 
 Exemplo 3:
 Remetente: Canva
